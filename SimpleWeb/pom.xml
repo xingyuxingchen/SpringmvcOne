@@ -1,0 +1,406 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>xingkong</groupId>
+  <artifactId>SimpleWeb</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+		<!-- Framework -->
+		<!-- Generic properties -->
+		<java.version>1.7</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- solrj -->
+		<solr-solrj.version>4.10.4</solr-solrj.version>
+		<!-- solrj -->
+		<quartz.version>2.2.2</quartz.version>
+		<!-- Java EE / Java SE -->
+		<servlet.version>3.0.1</servlet.version>
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2</jstl.version>
+
+		<!-- Core -->
+		<!-- Spring -->
+		<spring-framework.version>4.1.6.RELEASE</spring-framework.version>
+		<spring-data.version>1.7.2.RELEASE</spring-data.version>
+		<!-- AOP -->
+		<aspectj.version>1.8.6</aspectj.version>
+		<!-- Bean validation -->
+		<hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
+
+		<!-- Datasource -->
+		<!-- MySql driver -->
+		<mysql.version>5.1.22</mysql.version>
+		<!-- Mongo -->
+		<mongo.version>3.0.3</mongo.version>
+		<mongodb-morphia.version>0.105</mongodb-morphia.version>
+		<!-- Datasource connection pool -->
+		<tomcat-jdbc.version>8.0.24</tomcat-jdbc.version>
+		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<!-- Mybatis -->
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<mybatis-pagehelper.version>4.0.0</mybatis-pagehelper.version>
+
+		<!-- Security -->
+		<!-- Shiro -->
+		<shiro.version>1.2.3</shiro.version>
+		<!-- Encryption -->
+		<commons-codec.version>1.10</commons-codec.version>
+
+		<!-- Logging -->
+		<logback.version>1.1.3</logback.version>
+		<slf4j.version>1.7.12</slf4j.version>
+		<logback-ext-spring.version>0.1.4</logback-ext-spring.version>
+
+		<!-- Test -->
+		<junit.version>4.12</junit.version>
+		<hamcrest.version>1.3</hamcrest.version>
+
+		<!-- ETC -->
+		<!-- Cache -->
+		<ehcache.version>2.6.11</ehcache.version>
+		<!-- File Upload -->
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<!-- Utility -->
+		<guava.version>18.0</guava.version>
+		<commons-lang3.version>3.4</commons-lang3.version>
+		<!-- JSON -->
+		<jackson.version>2.5.4</jackson.version>
+		<!-- RSS -->
+		<rome.version>1.5.1</rome.version>
+		<!-- Project -->
+	</properties>
+
+	<dependencies>
+
+		<!-- sitemesh -->
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+		
+		<!-- Ant for zip-->
+		<dependency>
+    		<groupId>org.apache.ant</groupId>
+    		<artifactId>ant</artifactId>
+    		<version>1.9.7</version>
+		</dependency>
+		
+		<!-- Zip -->
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-compress</artifactId>
+    		<version>1.11</version>
+		</dependency>
+		
+		<!-- Ftp -->
+		<dependency>
+    		<groupId>commons-net</groupId>
+    		<artifactId>commons-net</artifactId>
+   			<version>3.4</version>
+		</dependency>
+		
+		<!-- Sftp -->
+		<dependency>
+    		<groupId>com.jcraft</groupId>
+    		<artifactId>jsch</artifactId>
+    		<version>0.1.53</version>
+		</dependency>
+		
+		<!-- javamail -->
+		<dependency>
+    		<groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+   			<version>1.4.7</version>
+		</dependency>
+		
+		<!-- Framework -->
+		<!-- Java EE / Java SE -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- Core -->
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<!-- used for EhCacheCacheManager -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring-framework.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-lang</groupId>
+					<artifactId>commons-lang</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+
+		<!-- Datasource -->
+		<!-- MySql driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Datasource connection pool -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>${tomcat-jdbc.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
+		<!-- Mybatis Plugin -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>${mybatis-pagehelper.version}</version>
+		</dependency>
+
+		<!-- Security -->
+		<!-- Shiro -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<!-- Encryption -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>  
+    		<groupId>org.logback-extensions</groupId>  
+    		<artifactId>logback-ext-spring</artifactId>  
+    		<version>${logback-ext-spring.version}</version>  
+    		<scope>compile</scope>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- used by Spring MVC Test framework -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- ETC -->
+		<!-- Cache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${ehcache.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- File Upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+		<!-- Utility -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<!-- RSS -->
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>${rome.version}</version>
+		</dependency>
+		<!-- spring for mongo -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb-cross-store</artifactId>
+			<version>${spring-data.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring-data.version}</version>
+		</dependency>
+		<!-- Mongo driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${mongo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb.morphia</groupId>
+			<artifactId>morphia</artifactId>
+			<version>${mongodb-morphia.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>solr-solrj</artifactId>
+			<groupId>org.apache.solr</groupId>
+			<version>${solr-solrj.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<artifactId>quartz</artifactId>
+			<groupId>org.quartz-scheduler</groupId>
+			<version>${quartz.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-imaging</artifactId> 
+			<version>1.0-SNAPSHOT</version> </dependency> -->
+		<!-- Project -->
+	</dependencies>
+</project>
